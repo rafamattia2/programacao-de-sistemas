@@ -22,5 +22,5 @@ Para utilizar o projeto, siga as instruções abaixo:
 
 ## Colaboradores
 
-<a href="https://github.com/CeciliaBotelho"><img src="https://media.licdn.com/dms/image/D4D03AQFlApRizDnZkw/profile-displayphoto-shrink_800_800/0/1671571403564?e=1684972800&v=beta&t=hn8q_6gJzU9EEoDn4mJpSimn-_p9YUfQTgNHO9BXCi4" alt="Foto do perfil" width="200" height="200"></a>
+<a href="https://github.com/CeciliaBotelho"><img src="https://media.licdn.com/dms/image/D4D03AQFlApRizDnZkw/profile-displayphoto-shrink_800_800/0/1671571403564?e=1684972800&v=beta&t=hn8q_6gJzU9EEoDn4mJpSimn-_p9YUfQTgNHO9BXCi4" alt="Foto do perfil" width="100" height="100"></a>
 <h2><a href="https://github.com/CeciliaBotelho">Cecilia Botelho</a></h2>
