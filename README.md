@@ -22,4 +22,4 @@ Para utilizar o projeto, siga as instruções abaixo:
 
 ## Colaboradores
 
-Cecilia Botelho
+![Descrição da imagem](https://media.licdn.com/dms/image/D4D03AQFlApRizDnZkw/profile-displayphoto-shrink_800_800/0/1671571403564?e=1684972800&v=beta&t=hn8q_6gJzU9EEoDn4mJpSimn-_p9YUfQTgNHO9BXCi4)
