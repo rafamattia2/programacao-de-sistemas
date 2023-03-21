@@ -35,11 +35,10 @@ Para utilizar o projeto, siga as instruções abaixo:
       <h3><a href="https://github.com/falivith" style="text-align:center;">Gabriel Ramires</a></h3>
     </td>
   </tr>
-</table>
-<td align="center">
-      <a href="https://github.com/pepemesquita"><img src="https://media.licdn.com/dms/image/C4E03AQEU_t--Mx9CUA/profile-displayphoto-shrink_200_200/0/1610761164752?e=1684972800&v=beta&t=qrBsMJZJnJcnkVqrWJw4TSTVTp43EEo6liorFoviSQ4" alt="Foto do perfil" width="100" height="100"></a>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/pepemesquita"><img src="https://avatars.githubusercontent.com/u/81587883?v=4" alt="Foto do perfil" width="100" height="100"></a>
       <h3><a href="https://github.com/pepemesquita" style="text-align:center;">Pedro Henrique</a></h3>
     </td>
   </tr>
 </table>
-
