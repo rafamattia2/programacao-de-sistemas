@@ -36,7 +36,7 @@ Para utilizar o projeto, siga as instruções abaixo:
     </td>
   </tr>
 </table>
-<td align="right">
+<td align="center">
       <a href="https://github.com/pepemesquita"><img src="https://avatars.githubusercontent.com/u/81587883?v=4" alt="Foto do perfil" width="100" height="100"></a>
       <h3><a href="https://github.com/pepemesquita" style="text-align:center;">Pedro Henrique</a></h3>
     </td>
