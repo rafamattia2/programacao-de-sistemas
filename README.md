@@ -29,5 +29,11 @@ Para utilizar o projeto, siga as instruções abaixo:
       <h3><a href="https://github.com/CeciliaBotelho" style="text-align:center;">Cecilia Botelho</a></h3>
     </td>
   </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Falivith"><img src="https://media.licdn.com/dms/image/C4D03AQEkIzD6sgWsYw/profile-displayphoto-shrink_800_800/0/1648139991799?e=1684972800&v=beta&t=RNmQNh40s5jPWVfPwdLH8JnrV3_ws-XQ39_S0_rZ_cA" alt="Foto do perfil" width="100" height="100"></a>
+      <h3><a href="https://github.com/falivith" style="text-align:center;">Gabriel Ramires</a></h3>
+    </td>
+  </tr>
 </table>
 
