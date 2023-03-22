@@ -52,5 +52,9 @@ Para utilizar o projeto, siga as instruções abaixo:
       <a href="https://github.com/rafaelmattia2"><img src="https://avatars.githubusercontent.com/u/81639593?v=4" alt="Foto do perfil" width="100" height="100"></a>
       <h3><a href="https://github.com/rafaelmattia2">Rafael Mattia</a></h3>
     </td>
+    <td align="center">
+      <a href="https://github.com/EduardoSchwantz"><img src="https://avatars.githubusercontent.com/u/94156206?v=4" alt="Foto do perfil" width="100" height="100"></a>
+      <h3><a href="https://github.com/EduardoSchwantz">Eduardo Schwantz</a></h3>
+    </td>
   </tr>
 </table>
