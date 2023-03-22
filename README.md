@@ -44,5 +44,13 @@ Para utilizar o projeto, siga as instruções abaixo:
       <a href="https://github.com/IScherdien"><img src="https://avatars.githubusercontent.com/u/89227363?s=400&u=6b06ece7ef4135a5bf0409545c833efd28037147&v=4" alt="Foto do perfil" width="100" height="100"></a>
       <h3><a href="https://github.com/IScherdien">Isabele Scherdien</a></h3>
     </td>
+      <td align="center">
+      <a href="https://github.com/amandamvieira"><img src="https://i.ibb.co/4dn7YN1/3d36ee2c-0f1e-47a1-b9e8-cf603f4169cf.jpg" alt="Foto do perfil" width="100" height="100"></a>
+      <h3><a href="https://github.com/amandamvieira">Amanda Vieira</a></h3>
+    </td>
+      <td align="center">
+      <a href="https://github.com/rafaelmattia2"><img src="https://avatars.githubusercontent.com/u/81639593?v=4" alt="Foto do perfil" width="100" height="100"></a>
+      <h3><a href="https://github.com/rafaelmattia2">Rafael Mattia</a></h3>
+    </td>
   </tr>
 </table>
