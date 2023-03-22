@@ -40,6 +40,9 @@ Para utilizar o projeto, siga as instruções abaixo:
       <a href="https://github.com/lucianoheling"><img src="https://avatars.githubusercontent.com/u/101375009?v=4" alt="Foto do perfil" width="100" height="100"></a>
       <h3><a href="https://github.com/lucianoheling">Luciano Heling</a></h3>
     </td>
+    </tr>
+    
+    <tr>
     <td align="center">
       <a href="https://github.com/IScherdien"><img src="https://avatars.githubusercontent.com/u/89227363?s=400&u=6b06ece7ef4135a5bf0409545c833efd28037147&v=4" alt="Foto do perfil" width="100" height="100"></a>
       <h3><a href="https://github.com/IScherdien">Isabele Scherdien</a></h3>
