@@ -1,6 +1,6 @@
 package ps.com.example.demo;
 
-public class Register{
+public class Registers {
     private int A; // Acumulador
     private int X; // Registrador de índice
     private int L; // Registrador de ligação
@@ -11,7 +11,7 @@ public class Register{
     private int PC; // Contador de Instruções (Program Counter)
     private int SW; // Palavra de status
 
-    public Register() {
+    public Registers() {
         // inicializa os registradores com valor 0
         this.A = 0;
         this.X = 0;
