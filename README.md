@@ -41,5 +41,10 @@ Para utilizar o projeto, siga as instruções abaixo:
       <h3><a href="https://github.com/pepemesquita" style="text-align:center;">Pedro Henrique</a></h3>
     </td>
   </tr>
-  
+   <tr>
+    <td align="center">
+      <a href="https://github.com/lucianoheling"><img src="https://avatars.githubusercontent.com/u/101375009?v=4" alt="Foto do perfil" width="100" height="100"></a>
+      <h3><a href="https://github.com/lucianoheling" style="text-align:center;">Luciano Heling</a></h3>
+    </td>
+  </tr>
 </table>
