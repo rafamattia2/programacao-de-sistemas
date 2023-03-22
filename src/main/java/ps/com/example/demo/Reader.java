@@ -6,27 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Reader {
-    static class Record {
-        char type;
-        String data;
-
-        Record(char type, String data) {
-            this.type = type;
-            this.data = data;
-        }
-    }
-
-    public static void main(String[] args) {
-        String filePath = "path/to/your/object_code_file.txt";
-        List<Record> records = readObjectCode(filePath);
-
-        for (Record record : records) {
-            System.out.println("Type: " + record.type + " Data: " + record.data);
-        }
-    }
-
-    public static List<Record> readObjectCode(String filePath) {
-        List<Record> records = new ArrayList<>();
+    public static List<Loaded> readObjectCode(String filePath) {
+        List<Loaded> loading = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -34,13 +15,13 @@ class Reader {
                 if (line.length() > 0) {
                     char recordType = line.charAt(0);
                     String recordData = line.substring(1);
-                    records.add(new Record(recordType, recordData));
+                    loading.add(new Loaded(recordType, recordData));
                 }
             }
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
         }
 
-        return records;
+        return loading;
     }
 }
