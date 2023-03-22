@@ -1,7 +1,8 @@
 package ps.com.example.demo;
 
 public class Memory {
-    String[] memory;
+    private String[] memory;
+    private String[] addresses;
 
     public Memory (int size){
         this.memory = new String[size];
