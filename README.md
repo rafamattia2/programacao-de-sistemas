@@ -21,34 +21,28 @@ Para utilizar o projeto, siga as instruções abaixo:
 5. Execute a máquina virtual com o arquivo executável gerado como entrada.
 
 ## Colaboradores
-
-<table align="center" display="flex">
-    <tr>
-        <td align="center">
-          <a href="https://github.com/CeciliaBotelho"><img src="https://media.licdn.com/dms/image/D4D03AQFlApRizDnZkw/profile-displayphoto-shrink_800_800/0/1671571403564?e=1684972800&v=beta&t=hn8q_6gJzU9EEoDn4mJpSimn-_p9YUfQTgNHO9BXCi4" alt="Foto do perfil" width="100" height="100"></a>
-          <h3><a href="https://github.com/CeciliaBotelho" style="text-align:center;">Cecilia Botelho</a></h3>
-        </td>
-
-
-        <td align="center">
-          <a href="https://github.com/Falivith"><img src="https://media.licdn.com/dms/image/C4D03AQEkIzD6sgWsYw/profile-displayphoto-shrink_800_800/0/1648139991799?e=1684972800&v=beta&t=RNmQNh40s5jPWVfPwdLH8JnrV3_ws-XQ39_S0_rZ_cA" alt="Foto do perfil" width="100" height="100"></a>
-          <h3><a href="https://github.com/falivith" style="text-align:center;">Gabriel Ramires</a></h3>
-        </td>
-
-
-        <td align="center">
-          <a href="https://github.com/pepemesquita"><img src="https://avatars.githubusercontent.com/u/81587883?v=4" alt="Foto do perfil" width="100" height="100"></a>
-          <h3><a href="https://github.com/pepemesquita" style="text-align:center;">Pedro Henrique</a></h3>
-        </td>
-
-        <td align="center">
-          <a href="https://github.com/lucianoheling"><img src="https://avatars.githubusercontent.com/u/101375009?v=4" alt="Foto do perfil" width="100" height="100"></a>
-          <h3><a href="https://github.com/lucianoheling" style="text-align:center;">Luciano Heling</a></h3>
-        </td>
-
-        <td align="center">
-          <a href="https://github.com/IScherdien"><img src="https://avatars.githubusercontent.com/u/89227363?s=400&u=6b06ece7ef4135a5bf0409545c833efd28037147&v=4" alt="Foto do perfil" width="100" height="100"></a>
-          <h3><a href="https://github.com/IScherdien" style="text-align:center;">Isabele Scherdien</a></h3>
-        </td>
+        
+<table align="center">
+  <tr>
+    <td>
+      <a href="https://github.com/CeciliaBotelho"><img src="https://media.licdn.com/dms/image/D4D03AQFlApRizDnZkw/profile-displayphoto-shrink_800_800/0/1671571403564?e=1684972800&v=beta&t=hn8q_6gJzU9EEoDn4mJpSimn-_p9YUfQTgNHO9BXCi4" alt="Foto do perfil"></a>
+      <h3><a href="https://github.com/CeciliaBotelho">Cecilia Botelho</a></h3>
+    </td>
+    <td>
+      <a href="https://github.com/Falivith"><img src="https://media.licdn.com/dms/image/C4D03AQEkIzD6sgWsYw/profile-displayphoto-shrink_800_800/0/1648139991799?e=1684972800&v=beta&t=RNmQNh40s5jPWVfPwdLH8JnrV3_ws-XQ39_S0_rZ_cA" alt="Foto do perfil"></a>
+      <h3><a href="https://github.com/falivith">Gabriel Ramires</a></h3>
+    </td>
+    <td>
+      <a href="https://github.com/pepemesquita"><img src="https://avatars.githubusercontent.com/u/81587883?v=4" alt="Foto do perfil"></a>
+      <h3><a href="https://github.com/pepemesquita">Pedro Henrique</a></h3>
+    </td>
+    <td>
+      <a href="https://github.com/lucianoheling"><img src="https://avatars.githubusercontent.com/u/101375009?v=4" alt="Foto do perfil"></a>
+      <h3><a href="https://github.com/lucianoheling">Luciano Heling</a></h3>
+    </td>
+    <td>
+      <a href="https://github.com/IScherdien"><img src="https://avatars.githubusercontent.com/u/89227363?s=400&u=6b06ece7ef4135a5bf0409545c833efd28037147&v=4" alt="Foto do perfil"></a>
+      <h3><a href="https://github.com/IScherdien">Isabele Scherdien</a></h3>
+    </td>
   </tr>
 </table>
