@@ -49,13 +49,13 @@ class Reader {
                             }
                             else{
                                 actual.setBinaryCode(String.format("%24s", Integer.toBinaryString(Integer.parseInt(buffer, 16))).replace(' ', '0'));
-                                actual.setOp1(actual.getBinaryCode().substring(8, 12));
-                                actual.setOp2(actual.getBinaryCode().substring(12, 16));
+                                actual.setOp1(actual.getBinaryCode().substring(12));
+                                System.out.println(actual.getOp1());
+                                actual.setOp2(null);
                             }
 
                             actual.setAddress(Integer.toHexString((Integer.parseInt(baseAddress, 16)) + lastFormat));
-                            actual.setOp1(buffer.substring(2, 4));
-                            actual.setOp2(buffer.substring(4));
+                            actual.setAddressingMode(addressingModeCalculator(actual.getBinaryCode()));
 
                             instructionList.add(actual);
 
@@ -73,10 +73,6 @@ class Reader {
         }
 
         return new Loaded(programName, initialAddress, programSize, instructionList);
-    }
-
-    String calcNextAddress(String instruction){
-        return instruction;
     }
 
     static int calcInstructionFormat(String instruction){
@@ -147,7 +143,20 @@ class Reader {
         return opCodeList.getOrDefault(opCode, null);
     }
 
-    static String addressingModeCalculator(){
-        return null;
+    static String addressingModeCalculator(String instruction){
+        int n = 6, i = 7, x = 8;
+
+        if (instruction.charAt(x) == '1'){
+            return "indexed";
+        }
+        if (instruction.charAt(n) == '0' && instruction.charAt(i) == '1'){
+            return "immediate";
+        }
+        else if (instruction.charAt(n) == '1' && instruction.charAt(i) == '0'){
+            return "indirect";
+        }
+        else{
+            return "direct";
+        }
     }
 }
