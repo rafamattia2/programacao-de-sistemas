@@ -12,18 +12,15 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext app = SpringApplication.run(DemoApplication.class, args);
-		String filePath = "src/src.txt";
 
+		String filePath = "src/src.o";
 		Reader reader = new Reader();
-		List<Loaded> program = reader.readObjectCode(filePath);
+		Loaded program = reader.readObjectCode(filePath);
 
-		for (Loaded codes : program) {
-			String[] binaryLine = codes.toBinary();
+		List<Instruction> list = program.getInstructions();
 
-			for (String str : binaryLine) {
-				System.out.print(str + " ");
-			}
-			System.out.println("\n");
+		for (Instruction instruction : list) {
+			System.out.println("Nome da instrução: " + instruction.getMnemonic());
 		}
 
 		app.close();

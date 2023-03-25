@@ -1,33 +1,53 @@
 package ps.com.example.demo;
 
+/* Essa classe armazena as características do programa
+ * atual carregado na máquina virtual */
+
+import java.util.ArrayList;
+import java.util.List;
+
 class Loaded {
-    char type;
-    String data;
+    private String startingAddress;
+    private String programSize;
+    private int instructions_number;
+    private List<Instruction> instructions;
 
-    Loaded (char type, String data) {
-        this.type = type;
-        this.data = data;
+    Loaded (String startAddr, String progSize, int instrNumber, List<Instruction> instructions) {
+        this.startingAddress = startAddr;
+        this.programSize = progSize;
+        this.instructions_number = instrNumber;
+        this.instructions = instructions;
     }
-    public String toString() {
-        return "" + type + data;
+
+    public String getStartingAddress() {
+        return startingAddress;
     }
 
-    public String[] toBinary() {
+    public void setStartingAddress(String startingAddress) {
+        this.startingAddress = startingAddress;
+    }
 
-        //Remove os espaços e divide em substrings
-        String[] substrings = data.trim().split("\\s+");
-        String[] binarios = new String[substrings.length];
+    public String getProgramSize() {
+        return programSize;
+    }
 
-        if (type == 'H'){
-            return substrings;
-        }
+    public void setProgramSize(String programSize) {
+        this.programSize = programSize;
+    }
 
-        for (int i = 0; i < substrings.length ; i++){
-            int valor = Integer.parseInt(substrings[i]);
-            binarios[i] = Integer.toBinaryString(valor);
-        }
+    public int getInstructions_number() {
+        return instructions_number;
+    }
 
-        //Retorna uma array de Strings em binário que representa a linha de código de máquina
-        return binarios;
+    public void setInstructions_number(int instructions_number) {
+        this.instructions_number = instructions_number;
+    }
+
+    public List<Instruction> getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(List<Instruction> instructions) {
+        this.instructions = instructions;
     }
 }
