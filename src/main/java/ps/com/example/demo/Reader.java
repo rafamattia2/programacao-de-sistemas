@@ -36,17 +36,30 @@ class Reader {
                         // Iteração pelo número de instruções da linha
                         for (int i = 0; i < (Integer.parseInt(line.substring(9, 11), 16)) / 3; i++) {
                             Instruction actual = new Instruction();
-                            buffer = line.substring(startIndex, endIndex);
 
+                            buffer = line.substring(startIndex, endIndex);
                             actual.setHexCode(buffer);
-                            actual.setBinaryCode(Integer.toBinaryString(Integer.parseInt(buffer, 16)));
                             actual.setMnemonic(evaluateOpcode(buffer.substring(0, 2)));
                             actual.setFormat(calcInstructionFormat(actual.getMnemonic()));
+
+                            if (actual.getFormat() == 2) {
+                                actual.setBinaryCode(String.format("%16s", Integer.toBinaryString(Integer.parseInt(buffer, 16))).replace(' ', '0'));
+                                actual.setOp1(actual.getBinaryCode().substring(8, 12));
+                                actual.setOp2(actual.getBinaryCode().substring(12, 16));
+                            }
+                            else{
+                                actual.setBinaryCode(String.format("%24s", Integer.toBinaryString(Integer.parseInt(buffer, 16))).replace(' ', '0'));
+                                actual.setOp1(actual.getBinaryCode().substring(8, 12));
+                                actual.setOp2(actual.getBinaryCode().substring(12, 16));
+                            }
+
                             actual.setAddress(Integer.toHexString((Integer.parseInt(baseAddress, 16)) + lastFormat));
+                            actual.setOp1(buffer.substring(2, 4));
+                            actual.setOp2(buffer.substring(4));
 
                             instructionList.add(actual);
 
-                            lastFormat = actual.getFormat();
+                            lastFormat += actual.getFormat();
                             startIndex += 7;
                             endIndex += 7;
                         }
@@ -132,5 +145,9 @@ class Reader {
         opCodeList.put("B8", "TIXR");
 
         return opCodeList.getOrDefault(opCode, null);
+    }
+
+    static String addressingModeCalculator(){
+        return null;
     }
 }

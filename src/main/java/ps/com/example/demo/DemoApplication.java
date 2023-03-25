@@ -20,7 +20,7 @@ public class DemoApplication {
 		List<Instruction> list = program.getInstructions();
 
 		for (Instruction instruction : list) {
-			System.out.println("Nome da instrução: " + instruction.getMnemonic());
+			System.out.println("Nome da instrução: " + instruction.getMnemonic() + " Binário: " + instruction.getBinaryCode() + " Hex: " + instruction.getHexCode() + " Endereço = " + instruction.getAddress() + " Formato = " + instruction.getFormat());
 		}
 
 		app.close();
