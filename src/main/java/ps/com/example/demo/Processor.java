@@ -69,7 +69,7 @@ public class Processor {
                 Instructions.sta(registers, memory, instruction.getAddress());
                 break;
         }
-        registers.setPC(registers.getPC() + instruction.getSize());
+        registers.setPC(registers.getPC() + instruction.getSize()); // nao consegui fazer o uso do getsize
     }
 }
 
