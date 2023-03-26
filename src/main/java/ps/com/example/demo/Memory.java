@@ -1,8 +1,12 @@
 package ps.com.example.demo;
 
+import lombok.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class Memory {
     private Loaded program;
     private static final int WORD_SIZE = 24;

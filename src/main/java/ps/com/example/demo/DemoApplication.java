@@ -2,6 +2,8 @@ package ps.com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+
+import java.sql.SQLOutput;
 import java.util.List;
 
 
@@ -16,6 +18,10 @@ public class DemoApplication {
 
 		List<Instruction> list = program.getInstructions();
 
+		Memory memory = new Memory(program);
+
+		memory.getMemory();
+		memory.getAddresses();
 		for (Instruction instruction : list) {
 			System.out.println("Nome da instrução: " + instruction.getMnemonic() + " Binário: " + instruction.getBinaryCode() + " Hex: " + instruction.getHexCode() + " Endereço = " + instruction.getAddress() + " Formato = " + instruction.getFormat());
 			if(instruction.getFormat() == 2) {
@@ -27,6 +33,7 @@ public class DemoApplication {
 			}
 		}
 
+		System.out.println(program.getProgramSize() + " " + program.getStartingAddress());
 		app.close();
 	}
 }

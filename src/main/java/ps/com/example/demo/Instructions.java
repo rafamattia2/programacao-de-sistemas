@@ -1,15 +1,15 @@
 package ps.com.example.demo;
 // Instruções SIC/XE
 public class Instructions {
-    public static void add(Registers registers, Memory memory, int address) {
+    public static void add (Registers registers, Memory memory, String address) {
         registers.setA(registers.getA() + Integer.valueOf(memory.read(address)));
     }
 
-    public static void and(Registers registers, Memory memory, int address) {
+    public static void and(Registers registers, Memory memory, String address) {
         registers.setA(registers.getA() & Integer.valueOf(memory.read(address)));
     }
 
-    public static void comp(Registers registers, Memory memory, int address) {
+    public static void comp(Registers registers, Memory memory, String address) {
         int value = Integer.valueOf(memory.read(address));
         if (registers.getA() < value) {
             registers.setSW(-1);
@@ -20,7 +20,7 @@ public class Instructions {
         }
     }
 
-    public static void div(Registers registers, Memory memory, int address) {
+    public static void div(Registers registers, Memory memory, String address) {
         int value = Integer.valueOf(memory.read(address));
         if (value != 0) {
             registers.setA(registers.getA() / value);
@@ -50,36 +50,36 @@ public class Instructions {
     }
 
     public static void jsub(Registers registers, Memory memory, int address) {
-        memory.write(registers.getL(), String.valueOf(registers.getPC()));
+        memory.write(String.valueOf(registers.getL()), (byte)registers.getPC());
         registers.setL(registers.getPC());
         registers.setPC(address);
     }
 
-    public static void lda(Registers registers, Memory memory, int address) {
+    public static void lda(Registers registers, Memory memory, String address) {
         registers.setA(Integer.valueOf(memory.read(address)));
     }
 
-    public static void ldch(Registers registers, Memory memory, int address) {
+    public static void ldch(Registers registers, Memory memory, String address) {
         registers.setA((registers.getA() & 0xFFFF00) | (Integer.valueOf(memory.read(address)) & 0xFF));
     }
 
-    public static void ldl(Registers registers, Memory memory, int address) {
+    public static void ldl(Registers registers, Memory memory, String address) {
         registers.setL(Integer.valueOf(memory.read(address)));
     }
 
-    public static void ldx(Registers registers, Memory memory, int address) {
+    public static void ldx(Registers registers, Memory memory, String address) {
         registers.setX(Integer.valueOf(memory.read(address)));
     }
 
-    public static void mul(Registers registers, Memory memory, int address) {
+    public static void mul(Registers registers, Memory memory, String address) {
         registers.setA(registers.getA() * Integer.valueOf(memory.read(address)));
     }
 
-    public static void or(Registers registers, Memory memory, int address) {
+    public static void or(Registers registers, Memory memory, String address) {
         registers.setA(registers.getA() | Integer.valueOf(memory.read(address)));
     }
 
-    public static void sta(Registers registers, Memory memory, int address) {
-        memory.write(address, String.valueOf(registers.getA()));
+    public static void sta(Registers registers, Memory memory, String address) {
+        memory.write(address, (byte)(registers.getA()));
     }
 }
