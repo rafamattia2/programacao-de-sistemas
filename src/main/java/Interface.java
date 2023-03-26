@@ -22,4 +22,13 @@ public class Interface {
     private void createUIComponents() {
         // TODO: place custom component creation code here
     }
+
+    /*@Override
+    public void valueChanged(ListSelectionEvent e) {
+        if (e.getValue()==nomeDoJBotton) {
+            //faz alguma coisa
+
+        }
+    }*/
+
 }
