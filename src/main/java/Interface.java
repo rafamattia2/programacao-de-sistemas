@@ -11,6 +11,13 @@ public class Interface {
     private JTextField textField5;
     private JTextField textField6;
     private JTextField PC;
+    private JLabel Fonte_padrao;
+    private JLabel Reg_text1;
+    private JTextField reg5;
+    private JTextField textField1;
+    private JTextField textField7;
+    private JTextArea textArea1;
+    private JTextPane textPane1;
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
