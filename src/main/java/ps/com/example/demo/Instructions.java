@@ -82,4 +82,15 @@ public class Instructions {
     public static void sta(Registers registers, Memory memory, String address) {
         memory.write(address, (byte)(registers.getA()));
     }
+
+    public static String getOpCode(String instruction) {
+        String[] opCodes = {"ADD", "AND", "COMP", "DIV", "J", "JEQ", "JGT", "JLT",
+                            "JSUB", "LDA", "LDCH", "LDL", "LDX", "MUL", "OR", "STA"};
+        for(String opCode : opCodes) {
+            if(instruction.startsWith(opCode)){
+                return opCode;
+            }
+        }
+        return null;
+    }
 }

@@ -1,16 +1,21 @@
 package ps.com.example.demo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+@Setter
+@Getter
 public class Memory {
     private Loaded program;
     private Set<MemoryItem> memory = new TreeSet<>();
 
     public Memory(Loaded program) {
         this.program = program;
-        for(int i = 0; i < 2048; i++){
+        for(int i = 0; i < 16384; i++){
             String address = String.format("%06X", i);
             memory.add(new MemoryItem(address, (byte) 0));
         }
@@ -18,7 +23,8 @@ public class Memory {
     }
 
     public void loadProgram(Loaded program) {
-        int currentAddress = Integer.parseInt(program.getStartingAddress());
+        String startAddress = program.getStartingAddress();
+        int currentAddress = Integer.parseInt(startAddress, 16);
         System.out.println(currentAddress);
         for (Instruction instruction : program.getInstructions()) {
             String hexCode = instruction.getHexCode();

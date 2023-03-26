@@ -27,7 +27,8 @@ public class DemoApplication {
 			System.out.print(address + "->" + memData + "\n");
 
 		}
-
+		Byte memData = memory.read("004001");
+		System.out.println(memData);
 //		int i = 0;
 //		for(MemoryItem memoryItem : memory.getMemoryItem()){
 //			String address = memoryItem.getAddress();
