@@ -9,7 +9,8 @@ class Reader {
 
         String programName = null;
         String initialAddress = null;
-        int programSize = 0;
+        String programSize = null;
+        int instr_number = 0;
 
         List<Instruction> instructionList = new ArrayList<>();
 
@@ -17,25 +18,23 @@ class Reader {
             String line;
             while ((line = br.readLine()) != null) {
 
-                System.out.println(line);
                 String buffer; // Responsável por guardar o hex atual
 
                 if (line.length() > 0) {
                     if (line.charAt(0) == 'H') {
                         programName = line.substring(2, 8);
                         initialAddress = line.substring(10, 15);
-                        programSize = Integer.parseInt(line.substring(16, 22), 16);
-                        System.out.println("Header: " + programName + " " + initialAddress + " " + programSize);
+                        programSize = line.substring(16);
 
                     } else if (line.charAt(0) == 'T') {
 
                         String baseAddress = line.substring(2, 8);
                         int startIndex = 12, endIndex = 18, lastFormat = 0;
-                        System.out.println(line.substring(9,11));
 
                         // Iteração pelo número de instruções da linha
                         for (int i = 0; i < (Integer.parseInt(line.substring(9, 11), 16)) / 3; i++) {
                             Instruction actual = new Instruction();
+                            instr_number++;
 
                             buffer = line.substring(startIndex, endIndex);
                             actual.setHexCode(buffer);
@@ -50,7 +49,6 @@ class Reader {
                             else{
                                 actual.setBinaryCode(String.format("%24s", Integer.toBinaryString(Integer.parseInt(buffer, 16))).replace(' ', '0'));
                                 actual.setOp1(actual.getBinaryCode().substring(12));
-                                System.out.println(actual.getOp1());
                                 actual.setOp2(null);
                             }
 
@@ -72,7 +70,7 @@ class Reader {
             System.err.println("Erro ao abrir o arquivo: " + e.getMessage());
         }
 
-        return new Loaded(programName, initialAddress, programSize, instructionList);
+        return new Loaded(initialAddress, programSize, programName, instr_number, instructionList);
     }
 
     static int calcInstructionFormat(String instruction){
