@@ -1,133 +1,86 @@
 package ps.com.example.demo;
 
+import java.util.List;
+
+import static ps.com.example.demo.Reader.*;
+
 public class Processor {
     private Instruction instruction;
+    private String addressOperando;
     private Registers registers;
     private Memory memory;
+    private Loaded program;
+    private List<Instruction> instructionsList;
 
-    public Processor() {
-        this.instruction = null;
+    public Processor(Memory memory) {
+        this.instruction = new Instruction();
         this.registers = new Registers();
-        this.memory = new Memory();
+        this.memory = memory;
     }
 
     public void run() {
-        while (registers.getPC() < memory.getSize()) {
-            instruction = new Instruction(memory.reader(registers.getPC()));
-            executeInstruction();
+
+        program = memory.getProgram();
+        instructionsList = program.getInstructions();
+        registers.setPC(Integer.parseInt(program.getStartingAddress(), 16));
+
+        System.out.println("Program Counter: " + registers.getPC());
+        decodeInstruction();
+        executeInstruction();
+        registers.setPC(registers.getPC() + 3);
+        System.out.println("Program Counter: " + registers.getPC());
+
+        decodeInstruction();
+        executeInstruction();
+        registers.setPC(registers.getPC() + 3);
+        System.out.println("Program Counter: " + registers.getPC());
+
+        decodeInstruction();
+        executeInstruction();
+        registers.setPC(registers.getPC() + 3);
+        System.out.println("Program Counter: " + registers.getPC());
+    }
+
+    private void decodeInstruction(){
+        byte firstByte = memory.read(String.format("%06X", registers.getPC()));
+        byte secondByte;
+        byte thirdByte;
+
+        String opcode = evaluateOpcode(String.format("%02X", firstByte));
+        int instructionFormat = calcInstructionFormat(opcode);
+
+        if(instructionFormat == 3){
+            secondByte = memory.read(String.format("%06X", registers.getPC() + 1));
+            thirdByte = memory.read(String.format("%06X", registers.getPC() + 2));
+            byte[] word = new byte[3];
+
+            word[0] = firstByte;
+            word[1] = secondByte;
+            word[2] = thirdByte;
+
+            String hex = String.format("%02X%02X%02X", word[0], word[1], word[2]);
+
+            instruction.setHexCode(hex);
+            instruction.setMnemonic(evaluateOpcode(hex.substring(0, 2)));
+            instruction.setFormat(calcInstructionFormat(instruction.getMnemonic()));
+            instruction.setBinaryCode(String.format("%24s", Integer.toBinaryString(Integer.parseInt(hex, 16))).replace(' ', '0'));
+            instruction.setOp1(instruction.getBinaryCode().substring(12));
+            instruction.setAddressingMode(addressingModeCalculator(instruction.getBinaryCode()));
+            addressOperando = String.format("%06X", Integer.parseInt(instruction.getOp1(), 2));
         }
     }
 
     private void executeInstruction() {
-        switch (instruction.getOpcode()) {
-            case "ADD":
-                Instructions.add(registers, memory, instruction.getAddress());
-                break;
-            case "AND":
-                Instructions.and(registers, memory, instruction.getAddress());
-                break;
-            case "COMP":
-                Instructions.comp(registers, memory, instruction.getAddress());
-                break;
-            case "DIV":
-                Instructions.div(registers, memory, instruction.getAddress());
-                break;
-            case "J":
-                Instructions.j(registers, memory, instruction.getAddress());
-                break;
-            case "JEQ":
-                Instructions.jeq(registers, memory, instruction.getAddress());
-                break;
-            case "JGT":
-                Instructions.jgt(registers, memory, instruction.getAddress());
-                break;
-            case "JLT":
-                Instructions.jlt(registers, memory, instruction.getAddress());
-                break;
-            case "JSUB":
-                Instructions.jsub(registers, memory, instruction.getAddress());
+        switch (instruction.getMnemonic()) {
+            case "LDX":
+                Instructions.ldx(registers, memory, addressOperando);
                 break;
             case "LDA":
-                Instructions.lda(registers, memory, instruction.getAddress());
+                Instructions.lda(registers, memory, addressOperando);
                 break;
-            case "LDCH":
-                Instructions.ldch(registers, memory, instruction.getAddress());
-                break;
-            case "LDL":
-                Instructions.ldl(registers, memory, instruction.getAddress());
-                break;
-            case "LDX":
-                Instructions.ldx(registers, memory, instruction.getAddress());
-                break;
-            case "MUL":
-                Instructions.mul(registers, memory, instruction.getAddress());
-                break;
-            case "OR":
-                Instructions.or(registers, memory, instruction.getAddress());
-                break;
-            case "STA":
-                Instructions.sta(registers, memory, instruction.getAddress());
+            case "ADD":
+                Instructions.add(registers, memory, addressOperando);
                 break;
         }
-        registers.setPC(registers.getPC() + instruction.getSize()); // nao consegui fazer o uso do getsize
     }
 }
-
-public class Registers {
-    private int A;
-    private int X;
-    private int L;
-    private int PC;
-    private int SW;
-
-    public Registers() {
-        this.A = 0;
-        this.X = 0;
-        this.L = 0;
-        this.PC = 0;
-        this.SW = 0;
-    }
-
-    public int getA() {
-        return A;
-    }
-
-    public void setA(int a) {
-        A = a;
-    }
-
-    public int getX() {
-        return X;
-    }
-
-    public void setX(int x) {
-        X = x;
-    }
-
-    public int getL() {
-        return L;
-    }
-
-    public void setL(int l) {
-        L = l;
-    }
-
-    public int getPC() {
-        return PC;
-    }
-
-    public void setPC(int pc) {
-        PC = pc;
-    }
-
-    public int getSW() {
-        return SW;
-    }
-
-    public void setSW(int sw) {
-        SW = sw;
-    }
-}
-
-public class Memory {
-    private final String

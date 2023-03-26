@@ -17,19 +17,27 @@ public class DemoApplication {
 		String filePath = "src/src.o";
 		Loaded program = Reader.readObjectCode(filePath);
 
-		List<Instruction> list = program.getInstructions();
-
 		Memory memory = new Memory(program);
 
-		for(MemoryItem memoryItem : memory.getMemoryItem()){
+		byte exemplo = 60;
+		memory.write("005788", exemplo);
+
+		/*for(MemoryItem memoryItem : memory.getMemoryItem()){
 			String address = memoryItem.getAddress();
 			Byte memData = memoryItem.getMemData();
 			System.out.print(address + "->" + memData + "\n");
 
 		}
+
 		Byte memData = memory.read("004001");
-		System.out.println(memData);
-//		int i = 0;
+		System.out.println(memData);*/
+
+		Processor cpu = new Processor(memory);
+		cpu.run();
+
+
+//	List<Instruction> list = program.getInstructions();
+//	int i = 0;
 //		for(MemoryItem memoryItem : memory.getMemoryItem()){
 //			String address = memoryItem.getAddress();
 //			Byte memData = memoryItem.getMemData();
@@ -48,8 +56,6 @@ public class DemoApplication {
 //				System.out.println("Operando: " + instruction.getOp1() + " Modo de Endereçamento: " + instruction.getAddressingMode());
 //			}
 //		}
-
-		System.out.println(program.getProgramSize() + " " + program.getStartingAddress());
 		app.close();
 	}
 }

@@ -3,6 +3,8 @@ package ps.com.example.demo;
 public class Instructions {
     public static void add (Registers registers, Memory memory, String address) {
         registers.setA(registers.getA() + Integer.valueOf(memory.read(address)));
+        System.out.println("(ADD) Valor REG A: " + registers.getA());
+
     }
 
     public static void and(Registers registers, Memory memory, String address) {
@@ -57,6 +59,7 @@ public class Instructions {
 
     public static void lda(Registers registers, Memory memory, String address) {
         registers.setA(Integer.valueOf(memory.read(address)));
+        System.out.println("(LDA) Valor REG A: "  + registers.getX());
     }
 
     public static void ldch(Registers registers, Memory memory, String address) {
@@ -69,6 +72,7 @@ public class Instructions {
 
     public static void ldx(Registers registers, Memory memory, String address) {
         registers.setX(Integer.valueOf(memory.read(address)));
+        System.out.println("(LDX) Valor REG A: "  + registers.getX());
     }
 
     public static void mul(Registers registers, Memory memory, String address) {

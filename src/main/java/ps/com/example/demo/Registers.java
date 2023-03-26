@@ -7,7 +7,6 @@ public class Registers {
     private int B; // Registrador Base
     private int S; // Registrador de uso geral
     private int T; // Registrador de uso geral
-    private long F; // Acumulador de ponto flutuante
     private int PC; // Contador de Instruções (Program Counter)
     private int SW; // Palavra de status
 
@@ -19,7 +18,6 @@ public class Registers {
         this.B = 0;
         this.S = 0;
         this.T = 0;
-        this.F = 0L;
         this.PC = 0;
         this.SW = 0;
     }
@@ -73,14 +71,6 @@ public class Registers {
         this.T = t;
     }
 
-    public long getF() {
-        return this.F;
-    }
-
-    public void setF(long f) {
-        this.F = f;
-    }
-
     public int getPC() {
         return this.PC;
     }
@@ -104,7 +94,6 @@ public class Registers {
         this.B = 0;
         this.S = 0;
         this.T = 0;
-        this.F = 0L;
         this.PC = 0;
         this.SW = 0;
     }
