@@ -1,10 +1,10 @@
 package ps.com.example.demo;
 // Instruções SIC/XE
+
 public class Instructions {
-    public static void add (Registers registers, Memory memory, String address) {
+    public static void add(Registers registers, Memory memory, String address) {
         registers.setA(registers.getA() + Integer.valueOf(memory.read(address)));
         System.out.println("(ADD) Valor REG A: " + registers.getA());
-
     }
 
     public static void and(Registers registers, Memory memory, String address) {
@@ -52,14 +52,14 @@ public class Instructions {
     }
 
     public static void jsub(Registers registers, Memory memory, int address) {
-        memory.write(String.valueOf(registers.getL()), (byte)registers.getPC());
+        memory.write(String.valueOf(registers.getL()), (byte) registers.getPC());
         registers.setL(registers.getPC());
         registers.setPC(address);
     }
 
     public static void lda(Registers registers, Memory memory, String address) {
         registers.setA(Integer.valueOf(memory.read(address)));
-        System.out.println("(LDA) Valor REG A: "  + registers.getX());
+        System.out.println("(LDA) Valor REG A: " + registers.getX());
     }
 
     public static void ldch(Registers registers, Memory memory, String address) {
@@ -72,7 +72,7 @@ public class Instructions {
 
     public static void ldx(Registers registers, Memory memory, String address) {
         registers.setX(Integer.valueOf(memory.read(address)));
-        System.out.println("(LDX) Valor REG A: "  + registers.getX());
+        System.out.println("(LDX) Valor REG X: " + registers.getX());
     }
 
     public static void mul(Registers registers, Memory memory, String address) {
@@ -83,15 +83,27 @@ public class Instructions {
         registers.setA(registers.getA() | Integer.valueOf(memory.read(address)));
     }
 
-    public static void sta(Registers registers, Memory memory, String address) {
-        memory.write(address, (byte)(registers.getA()));
+    public static void tix(Registers registers, Memory memory, String address) {
+        int value = Integer.valueOf(memory.read(address));
+        registers.setX(registers.getX() + 1);
+        if (registers.getX() < value) {
+            registers.setSW(-1);
+        } else if (registers.getX() == value) {
+            registers.setSW(0);
+        } else {
+            registers.setSW(1);
+        }
+    }
+
+    public static void rsub(Registers registers, Memory memory, String address) {
+        registers.setPC(registers.getL());
     }
 
     public static String getOpCode(String instruction) {
         String[] opCodes = {"ADD", "AND", "COMP", "DIV", "J", "JEQ", "JGT", "JLT",
-                            "JSUB", "LDA", "LDCH", "LDL", "LDX", "MUL", "OR", "STA"};
-        for(String opCode : opCodes) {
-            if(instruction.startsWith(opCode)){
+                "JSUB", "LDA", "LDCH", "LDL", "LDX", "MUL", "OR", "STA", "TIX", "RSUB"};
+        for (String opCode : opCodes) {
+            if (instruction.startsWith(opCode)) {
                 return opCode;
             }
         }

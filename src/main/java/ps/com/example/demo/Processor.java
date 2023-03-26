@@ -1,7 +1,5 @@
 package ps.com.example.demo;
-
 import java.util.List;
-
 import static ps.com.example.demo.Reader.*;
 
 public class Processor {
@@ -20,25 +18,16 @@ public class Processor {
 
     public void run() {
 
-        program = memory.getProgram();
-        instructionsList = program.getInstructions();
-        registers.setPC(Integer.parseInt(program.getStartingAddress(), 16));
-
-        System.out.println("Program Counter: " + registers.getPC());
-        decodeInstruction();
-        executeInstruction();
-        registers.setPC(registers.getPC() + 3);
+        registers.setPC(Integer.parseInt(memory.getProgram().getStartingAddress(), 16));
         System.out.println("Program Counter: " + registers.getPC());
 
-        decodeInstruction();
-        executeInstruction();
-        registers.setPC(registers.getPC() + 3);
-        System.out.println("Program Counter: " + registers.getPC());
-
-        decodeInstruction();
-        executeInstruction();
-        registers.setPC(registers.getPC() + 3);
-        System.out.println("Program Counter: " + registers.getPC());
+        while(registers.getPC() < 16406){
+            decodeInstruction();
+            System.out.println("Endereço Alvo: " + instruction.getOp1());
+            executeInstruction();
+            registers.setPC(registers.getPC() + 3);
+            System.out.println("Program Counter: " + registers.getPC());
+        }
     }
 
     private void decodeInstruction(){
@@ -48,6 +37,10 @@ public class Processor {
 
         String opcode = evaluateOpcode(String.format("%02X", firstByte));
         int instructionFormat = calcInstructionFormat(opcode);
+
+        if (opcode == null){
+            return;
+        }
 
         if(instructionFormat == 3){
             secondByte = memory.read(String.format("%06X", registers.getPC() + 1));
@@ -59,7 +52,6 @@ public class Processor {
             word[2] = thirdByte;
 
             String hex = String.format("%02X%02X%02X", word[0], word[1], word[2]);
-
             instruction.setHexCode(hex);
             instruction.setMnemonic(evaluateOpcode(hex.substring(0, 2)));
             instruction.setFormat(calcInstructionFormat(instruction.getMnemonic()));
@@ -77,9 +69,6 @@ public class Processor {
                 break;
             case "LDA":
                 Instructions.lda(registers, memory, addressOperando);
-                break;
-            case "ADD":
-                Instructions.add(registers, memory, addressOperando);
                 break;
         }
     }
