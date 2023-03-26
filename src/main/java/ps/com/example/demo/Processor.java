@@ -4,109 +4,130 @@ public class Processor {
     private Instruction instruction;
     private Registers registers;
     private Memory memory;
-    private Loaded program;
 
-    public Processor(Memory memory, Registers registers) {
-        this.instruction = new Instruction();
-        this.registers = registers;
-        this.memory = memory;
-        this.program = memory.getProgram();
+    public Processor() {
+        this.instruction = null;
+        this.registers = new Registers();
+        this.memory = new Memory();
     }
 
     public void run() {
-        while(true) {
-            String instructionString = fetchInstruction();
-            if(instruction.equals("HLT")) {
-                break;
-            }
-            decodeInstruction(instructionString);
+        while (registers.getPC() < memory.getSize()) {
+            instruction = new Instruction(memory.reader(registers.getPC()));
             executeInstruction();
         }
     }
 
-    private String fetchInstruction() {
-        int address = registers.getPC();
-        String instructionString = memory.read(address);
-        registers.setPC(address + 1);
-        return instructionString;
-    }
-
-    private void decodeInstruction(String instruction){
-        String opcode = instruction.substring(0, 2);
-        String address = instruction.substring(2);
-
-        switch(opcode) {
-            case "18":
-                Instructions.add(registers, memory, address);
+    private void executeInstruction() {
+        switch (instruction.getOpcode()) {
+            case "ADD":
+                Instructions.add(registers, memory, instruction.getAddress());
                 break;
-
-            case "40":
-                Instructions.and(registers, memory, address);
+            case "AND":
+                Instructions.and(registers, memory, instruction.getAddress());
                 break;
-
-            case "28":
-                Instructions.comp(registers, memory, address);
+            case "COMP":
+                Instructions.comp(registers, memory, instruction.getAddress());
                 break;
-
-            case "24":
-                Instructions.div(registers, memory, address);
+            case "DIV":
+                Instructions.div(registers, memory, instruction.getAddress());
                 break;
-
-            case "3C":
-                Instructions.j(registers, memory, Integer.parseInt(address, 16));
+            case "J":
+                Instructions.j(registers, memory, instruction.getAddress());
                 break;
-
-            case "30":
-                Instructions.jeq(registers, memory, Integer.parseInt(address, 16));
+            case "JEQ":
+                Instructions.jeq(registers, memory, instruction.getAddress());
                 break;
-
-            case "34":
-                Instructions.jgt(registers, memory, Integer.parseInt(address, 16));
+            case "JGT":
+                Instructions.jgt(registers, memory, instruction.getAddress());
                 break;
-
-            case "38":
-                Instructions.jlt(registers, memory, Integer.parseInt(address, 16));
+            case "JLT":
+                Instructions.jlt(registers, memory, instruction.getAddress());
                 break;
-
-            case "48":
-                Instructions.jsub(registers, memory, Integer.parseInt(address, 16));
+            case "JSUB":
+                Instructions.jsub(registers, memory, instruction.getAddress());
                 break;
-
-            case "00":
-                Instructions.lda(registers, memory, address);
+            case "LDA":
+                Instructions.lda(registers, memory, instruction.getAddress());
                 break;
-
-            case "50":
-                Instructions.ldch(registers, memory, address);
+            case "LDCH":
+                Instructions.ldch(registers, memory, instruction.getAddress());
                 break;
-
-            case "08":
-                Instructions.ldl(registers, memory, address);
+            case "LDL":
+                Instructions.ldl(registers, memory, instruction.getAddress());
                 break;
-
-            case "04":
-                Instructions.ldx(registers, memory, address);
+            case "LDX":
+                Instructions.ldx(registers, memory, instruction.getAddress());
                 break;
-
-            case "20":
-                Instructions.mul(registers, memory, address);
+            case "MUL":
+                Instructions.mul(registers, memory, instruction.getAddress());
                 break;
-
-            case "44":
-                Instructions.or(registers, memory, address);
+            case "OR":
+                Instructions.or(registers, memory, instruction.getAddress());
                 break;
-
-            case "0C":
-                Instructions.sta(registers, memory, address);
+            case "STA":
+                Instructions.sta(registers, memory, instruction.getAddress());
                 break;
-
-            default:
-                throw new IllegalArgumentException("Invalid instruction: " + instruction);
         }
-    }
-
-    private void executeInstruction(String instruction) {
-        decodeInstruction(instruction);
-        registers.setPC(registers.getPC()+1);
+        registers.setPC(registers.getPC() + instruction.getSize()); // nao consegui fazer o uso do getsize
     }
 }
+
+public class Registers {
+    private int A;
+    private int X;
+    private int L;
+    private int PC;
+    private int SW;
+
+    public Registers() {
+        this.A = 0;
+        this.X = 0;
+        this.L = 0;
+        this.PC = 0;
+        this.SW = 0;
+    }
+
+    public int getA() {
+        return A;
+    }
+
+    public void setA(int a) {
+        A = a;
+    }
+
+    public int getX() {
+        return X;
+    }
+
+    public void setX(int x) {
+        X = x;
+    }
+
+    public int getL() {
+        return L;
+    }
+
+    public void setL(int l) {
+        L = l;
+    }
+
+    public int getPC() {
+        return PC;
+    }
+
+    public void setPC(int pc) {
+        PC = pc;
+    }
+
+    public int getSW() {
+        return SW;
+    }
+
+    public void setSW(int sw) {
+        SW = sw;
+    }
+}
+
+public class Memory {
+    private final String
