@@ -11,12 +11,14 @@ class Loaded {
     private String programSize;
     private int instructions_number;
     private List<Instruction> instructions;
+    private String program_name;
 
-    Loaded (String startAddr, String progSize, int instrNumber, List<Instruction> instructions) {
+    Loaded (String startAddr, String progSize, String program_name, int instrNumber, List<Instruction> instructions) {
         this.startingAddress = startAddr;
         this.programSize = progSize;
         this.instructions_number = instrNumber;
         this.instructions = instructions;
+        this.program_name = program_name;
     }
 
     public String getStartingAddress() {
@@ -49,5 +51,13 @@ class Loaded {
 
     public void setInstructions(List<Instruction> instructions) {
         this.instructions = instructions;
+    }
+
+    public String getProgram_name() {
+        return program_name;
+    }
+
+    public void setProgram_name(String program_name) {
+        this.program_name = program_name;
     }
 }
