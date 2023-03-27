@@ -20,11 +20,14 @@ public class Memory {
     }
 
     public void loadProgram(Loaded program) {
+
         String startAddress = program.getStartingAddress();
         int currentAddress = Integer.parseInt(startAddress, 16);
-        System.out.println(currentAddress);
+
         for (Instruction instruction : program.getInstructions()) {
             String hexCode = instruction.getHexCode();
+
+
             String[] bytesString = hexCode.split("(?<=\\G.{2})");
             for (String byteString : bytesString) {
                 byte byteValue = (byte) Integer.parseInt(byteString, 16);

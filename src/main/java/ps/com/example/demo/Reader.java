@@ -40,6 +40,7 @@ class Reader {
                             actual.setHexCode(buffer);
                             actual.setMnemonic(evaluateOpcode(buffer.substring(0, 2)));
                             actual.setFormat(calcInstructionFormat(actual.getMnemonic()));
+                            actual.setAddress(Integer.toHexString((Integer.parseInt(baseAddress, 16)) + lastFormat));
 
                             if (actual.getFormat() == 2) {
                                 actual.setBinaryCode(String.format("%16s", Integer.toBinaryString(Integer.parseInt(buffer, 16))).replace(' ', '0'));
@@ -48,12 +49,17 @@ class Reader {
                             }
                             else{
                                 actual.setBinaryCode(String.format("%24s", Integer.toBinaryString(Integer.parseInt(buffer, 16))).replace(' ', '0'));
-                                actual.setOp1(actual.getBinaryCode().substring(12));
-                                actual.setOp2(null);
                             }
 
-                            actual.setAddress(Integer.toHexString((Integer.parseInt(baseAddress, 16)) + lastFormat));
                             actual.setAddressingMode(addressingModeCalculator(actual.getBinaryCode()));
+
+                            if ( actual.getFormat() == 3 ){
+                                actual.setOp1(actual.getBinaryCode().substring(12));
+                                if ( actual.getAddressingMode().equals("direct") ){
+                                    actual.setOp1(actual.getBinaryCode().substring(9));
+                                    System.out.println("Endereço Extendido: " + actual.getBinaryCode().substring(9));
+                                }
+                            }
 
                             instructionList.add(actual);
 

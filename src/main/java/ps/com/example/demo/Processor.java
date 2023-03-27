@@ -23,7 +23,7 @@ public class Processor {
 
         while(registers.getPC() < 16406){
             decodeInstruction();
-            System.out.println("Endereço Alvo: " + instruction.getOp1());
+            System.out.println("Endereço Alvo: " + String.format("%06X", Integer.parseInt(instruction.getOp1(), 2)));
             executeInstruction();
             registers.setPC(registers.getPC() + 3);
             System.out.println("Program Counter: " + registers.getPC());

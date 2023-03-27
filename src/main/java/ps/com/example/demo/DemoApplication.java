@@ -35,7 +35,6 @@ public class DemoApplication {
 		Processor cpu = new Processor(memory);
 		cpu.run();
 
-
 //	List<Instruction> list = program.getInstructions();
 //	int i = 0;
 //		for(MemoryItem memoryItem : memory.getMemoryItem()){
